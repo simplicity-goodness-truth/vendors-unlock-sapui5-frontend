@@ -1,0 +1,268 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+  xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="ZAPPVNDUNLOCK.controller.Detail">
+  <semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+    busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+    <semantic:content>
+      <ObjectHeader id="objectHeader" title="{Description}" number="{ObjectId}" backgroundDesign="Solid">
+        <ObjectAttribute id="__attribute2"
+          text="{i18n>postingDate}: {path: 'PostingDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long'} }"/>
+        <ObjectAttribute id="__attribute6" text="{i18n>Status}: {StatusText}"/>
+        <ObjectAttribute id="__attribute3" text="{i18n>Requestor}: {Requestor}"
+          tooltip="{i18n>requestorDepartment}: {RequestorDept} {i18n>requestorLogin}: {RequestorLogin}"/>
+        <statuses>
+          <ObjectStatus xmlns="sap.m" state="{= ${ScoreGreenColour} === true ? 'Success' : 'Error'}" text="{i18n>Score}: {Score} {ScoreText}"/>
+        </statuses>
+      </ObjectHeader>
+      <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+        <items>
+          <IconTabFilter id="iconTabBarFilter1" icon="sap-icon://business-card" tooltip="{i18n>detailIconTabBarInfo}" text="{i18n>vendorDetails}"
+            design="Horizontal">
+            <content>
+              <Table xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns="sap.m"
+                id="VendorDetailsList" inset="false" visible="{= ${VendorDataReceived} ? true : false }">
+                <columns>
+                  <Column width="30%">
+                    <!--    <Text text="{i18n>Parameter}"/> -->
+                  </Column>
+                  <Column width="70%">
+                    <!--    <Text text="{i18n>Value}"/> -->
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorCode}" width="100%"/>
+                      <Text text="{VendorCode}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorName}" width="100%"/>
+                      <Text text="{VendorName}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorPostingBlock}" width="100%"/>
+                      <Text text="{= ${VendorPostingBlock} === 'X' ? ${i18n>Yes} : ${i18n>No}}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>System}" width="100%"/>
+                      <Text text="{System}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>companyCode}" width="100%"/>
+                      <Text text="{CompanyCode}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>companyName}" width="100%"/>
+                      <Text text="{CompanyName}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorPaymentBlockReason}" width="100%"/>
+                      <Text text="{VendorPaymentBlockReason}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorPaymentDetails}" width="100%"/>
+                      <Text text="{VendorPaymentMethods}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorNIFcode}" width="100%"/>
+                      <Text text="{VendorTaxNumber}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorWithholdingTaxType}" width="100%"/>
+                      <Text text="{VendorWithholdingTaxType}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorReconciliationAccount}" width="100%"/>
+                      <Text text="{VendorReconcillAccount}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorBankData}" width="100%"/>
+                      <Text text="{VendorBankCountry} {VendorBankNumber} {VendorBankAccount} {VendorBankAccountHolder}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorAddress}" width="100%"/>
+                      <Text text="{VendorPostalCode} {VendorCountryKey} {VendorRegion} {VendorCity} {VendorStreetHouse}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorEmail}" width="100%"/>
+                      <Text text="{VendorEmail}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorContactPersons}" width="100%"/>
+                      <Text text="{VendorContactName}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorTelephone}" width="100%"/>
+                      <Text text="{VendorTelephone}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+              <Table xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns="sap.m" inset="false"
+                visible="{= ${VendorDataReceived} ? false : true }">
+                <columns>
+                  <Column/>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{i18n>vendorDataMissing}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </IconTabFilter>
+          <IconTabFilter id="iconTabBarFilter2" tooltip="{i18n>detailIconTabBarInfo}" text="{i18n>vendorDocumentsChecklist}" design="Horizontal"
+            icon="sap-icon://activities">
+            <content>
+              <Table xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns="sap.m" inset="false"
+                items="{path: 'ValidationDocuments', sorter: {path: 'DocumentNumber'}}" visible="{= ${FlowStage} === 'Y' ? true : false }">
+                <columns>
+                  <Column width="10%">
+                    <Text text="{i18n>Number}"/>
+                  </Column>
+                  <Column width="68%">
+                    <Text text="{i18n>Document}"/>
+                  </Column>
+                  <Column width="14%">
+                    <Text text="{i18n>documentType}"/>
+                  </Column>
+                  <Column width="8%">
+                    <Text text="{i18n>Valid}"/>
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem detailPress="onSelectionChange">
+                    <customData>
+                      <core:CustomData key="doctype" value="{DocumentType}" writeToDom="true"/>
+                    </customData>
+                    <cells>
+                      <Text text="{DocumentNumber}"/>
+                      <Text text="{DocumentName}"/>
+                      <Text text="{DocumentTypeName}"/>
+                      <ObjectStatus state="{= ${DocumentStatus} === true ? 'Success' : 'Error'}" text="{= ${DocumentStatus} === true ? ${i18n>Yes} : ${i18n>No}}"
+                        class="bold"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+              <Table xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns="sap.m" inset="false"
+                items="{path: 'ValidationDocuments', sorter: {path: 'DocumentNumber'}}" visible="{= ${FlowStage} === 'U' ? true : false }"
+                id="CommiteeCentralFilesValidator">
+                <columns>
+                  <Column width="10%">
+                    <Text text="{i18n>Number}"/>
+                  </Column>
+                  <Column width="68%">
+                    <Text text="{i18n>Document}"/>
+                  </Column>
+                  <Column width="14%">
+                    <Text text="{i18n>documentType}"/>
+                  </Column>
+                  <Column width="8%">
+                    <Text text="{i18n>Valid}"/>
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem detailPress="onSelectionChange">
+                    <customData>
+                      <core:CustomData key="doctype" value="{DocumentType}" writeToDom="true"/>
+                    </customData>
+                    <cells>
+                      <Text text="{DocumentNumber}"/>
+                      <Text text="{DocumentName}"/>
+                      <Text text="{DocumentTypeName}"/>
+                      <Switch id="AttachmenListSwitch" change="onAttachmentSwitchChange" state="false" type="AcceptReject" enabled="true"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </IconTabFilter>
+          <IconTabFilter id="iconTabBarFilter3" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}"
+            text="{i18n>detailIconTabBarAttachments}" design="Horizontal">
+            <content>
+              <Table xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns="sap.m" inset="false"
+                items="{Attachments}" id="attachmentsTable">
+                <columns>
+                  <Column width="60%">
+                    <Text text="{i18n>fileName}"/>
+                  </Column>
+                  <Column width="20%">
+                    <Text text="{i18n>lastChangedByUser}"/>
+                  </Column>
+                  <Column width="20%">
+                    <Text text="{i18n>lastChangeDate}"/>
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem detailPress="onSelectionChange">
+                    <cells>
+                        <Link text="{fileName}" press="handleLinkPress" />
+                        <Text text="{contributor}"/>
+                        <Text text="{ path: 'uploadDate', type: 'sap.ui.model.type.DateTime', formatOptions: { style: 'medium' }}"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </IconTabFilter>
+          <IconTabFilter id="iconTabBarFilter4" icon="sap-icon://comment" tooltip="{i18n>detailIconTabBarInfo}" text="{i18n>Comments}"
+            design="Horizontal">
+            <content>
+              <Table xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns="sap.m" inset="false"
+                items="{Text}">
+                <columns>
+                  <Column/>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{Texts}" width="100%"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+    </semantic:content>
+    <semantic:positiveAction>
+      <semantic:PositiveAction id="approveRequestButton" text="{i18n>Approve}" press="onPressApprove"/>
+    </semantic:positiveAction>
+    <semantic:negativeAction>
+      <semantic:NegativeAction id="rejectRequestButton" text="{i18n>Reject}" press="onPressReject"/>
+    </semantic:negativeAction>
+  </semantic:DetailPage>
+</mvc:View>
